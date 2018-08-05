@@ -10,12 +10,6 @@
     "homepage": "https://github.com/rexlabsio/epc-generator",
     "authors": [
         {
-            "name": "Khaled Elmahdi",
-            "email": "khaled@Rexlabs.com",
-            "homepage": "https://elmahdi.uk/",
-            "role": "Author of forked repository"
-        },
-        {
             "name": "Andrea Marco Sartori",
             "email": "andrea.sartori@rexsoftware.com.au",
             "role": "Developer"

@@ -26,3 +26,7 @@ You can install the package via composer:
 ```
 composer require rexlabs/epc-generator
 ```
+
+## Credits
+
+This package has been built on top of [Khaled Elmahdi's EPC generator](https://github.com/mywebapplication/epc-generator).
