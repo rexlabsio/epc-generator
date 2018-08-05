@@ -1,6 +1,6 @@
 <?php
 
-namespace MyWebApplication\EpcGenerator;
+namespace Rexlabs\EpcGenerator;
 
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -264,8 +264,8 @@ class EpcGenerator
      */
     private function prepareImage($format = 'png', $quality = 70)
     {
-        $image                                 = Image::make(__DIR__ . '/../assets/' . $this->energyAssessment() . '.png');
-        $currentEnergyEfficiencyRatingArrow    = $this->arrow($this->currentEnergyEfficiencyRating(), 'eer');
+        $image = Image::make(__DIR__ . '/../assets/' . $this->energyAssessment() . '.png');
+        $currentEnergyEfficiencyRatingArrow = $this->arrow($this->currentEnergyEfficiencyRating(), 'eer');
         $image->insert(
             $currentEnergyEfficiencyRatingArrow,
             'top-left',
@@ -301,7 +301,7 @@ class EpcGenerator
 
         if (!is_null($this->address()) || !is_null($this->reference())) {
             // Expand the image to have the address under the diagram.
-            $original_width  = $image->getWidth();
+            $original_width = $image->getWidth();
             $original_height = $image->getHeight();
             $image->resizeCanvas($original_width, ($original_height + 130), 'top', false, 'ffffff')
             ->text('Address: ' . $this->address(), 15, ($original_height + 50), function ($font) {
@@ -362,7 +362,7 @@ class EpcGenerator
      */
     private function arrow($value, $type)
     {
-        $img    = Image::canvas(80, 60, '#fff');
+        $img = Image::canvas(80, 60, '#fff');
         $points = $points = [
             0, 30,
             10, 0,

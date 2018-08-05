@@ -1,50 +1,45 @@
 {
-    "name": "mywebapplication/epc-generator",
+    "name": "rexlabs/epc-generator",
     "description": "Energy Performance Graph Generator",
     "keywords": [
-        "my web application",
-        "epc generator",
-        "epc"
+        "epc",
+        "energy performance certificate",
+        "epc graph generator"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/mywebapplication/epc-generator",
-    "authors": [{
-        "name": "Khaled Elmahdi",
-        "email": "khaled@mywebapplication.com",
-        "homepage": "https://elmahdi.uk/"
-    }],
+    "homepage": "https://github.com/rexlabsio/epc-generator",
+    "authors": [
+        {
+            "name": "Khaled Elmahdi",
+            "email": "khaled@Rexlabs.com",
+            "homepage": "https://elmahdi.uk/",
+            "role": "Author of forked repository"
+        },
+        {
+            "name": "Andrea Marco Sartori",
+            "email": "andrea.sartori@rexsoftware.com.au",
+            "role": "Developer"
+        }
+    ],
     "require": {
-        "php": ">=7.0.0",
-        "illuminate/support": "~5.3",
+        "php": "^7.0.0",
         "intervention/image": "^2.4"
     },
     "require-dev": {
         "mikey179/vfsStream": "^1.6",
-        "phpunit/phpunit": "~5.0"
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "psr-4": {
-            "MyWebApplication\\EpcGenerator\\": "src"
+            "Rexlabs\\EpcGenerator\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MyWebApplication\\EpcGenerator\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "MyWebApplication\\EpcGenerator\\EpcGeneratorServiceProvider"
-            ],
-            "aliases": {
-                "EpcGenerator": "MyWebApplication\\EpcGenerator\\EpcGeneratorFacade"
-            }
+            "Rexlabs\\EpcGenerator\\Tests\\": "tests"
         }
     },
     "config": {
         "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

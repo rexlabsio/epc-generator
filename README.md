@@ -1,8 +1,8 @@
 # Laravel EPC Generator
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mywebapplication/epc-generator.svg?style=flat-square)](https://packagist.org/packages/mywebapplication/epc-generator)
-[![Build Status](https://img.shields.io/travis/mywebapplication/epc-generator/master.svg?style=flat-square)](https://travis-ci.org/mywebapplication/epc-generator)
-[![Total Downloads](https://img.shields.io/packagist/dt/mywebapplication/epc-generator.svg?style=flat-square)](https://packagist.org/packages/mywebapplication/epc-generator)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/rexlabs/epc-generator.svg?style=flat-square)](https://packagist.org/packages/rexlabs/epc-generator)
+[![Build Status](https://img.shields.io/travis/rexlabs/epc-generator/master.svg?style=flat-square)](https://travis-ci.org/rexlabs/epc-generator)
+[![Total Downloads](https://img.shields.io/packagist/dt/rexlabs/epc-generator.svg?style=flat-square)](https://packagist.org/packages/rexlabs/epc-generator)
 
 A library to generate Energy Performance Graph.
 
@@ -24,5 +24,5 @@ $report = (new EpcGenerator())
 You can install the package via composer:
 
 ```
-composer require mywebapplication/epc-generator
+composer require rexlabs/epc-generator
 ```
