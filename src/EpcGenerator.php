@@ -69,7 +69,7 @@ class EpcGenerator
      */
     public function setEnergyAssessment(string $energyAssessment)
     {
-        if (!in_array(strtolower($energyAssessment), ['epc', 'pea'])) {
+        if (!in_array(strtolower($energyAssessment), ['epc', 'pea', 'eer', 'eir'])) {
             throw new Exception('Energy Assessment type can be either EPC or PEA.');
         }
         $this->energyAssessment = strtolower($energyAssessment);
@@ -265,36 +265,81 @@ class EpcGenerator
     private function prepareImage($format = 'png', $quality = 70)
     {
         $image = Image::make(__DIR__ . '/../assets/' . $this->energyAssessment() . '.png');
-        $currentEnergyEfficiencyRatingArrow = $this->arrow($this->currentEnergyEfficiencyRating(), 'eer');
-        $image->insert(
-            $currentEnergyEfficiencyRatingArrow,
-            'top-left',
-            545,
-            $this->height($this->currentEnergyEfficiencyRating())
-        );
 
-        $currentEnvironmentalImpactRatingArrow = $this->arrow($this->currentEnvironmentalImpactRating(), 'eir');
-        $image->insert(
-            $currentEnvironmentalImpactRatingArrow,
-            'top-left',
-            $this->energyAssessment() == 'epc' ? 1327 : 1238,
-            $this->height($this->currentEnvironmentalImpactRating())
-        );
-
-        if ($this->energyAssessment() == 'epc') {
-            $potentialEnergyEfficiencyRatingArrow = $this->arrow($this->potentialEnergyEfficiencyRating(), 'eer');
+        if ($this->energyAssessment() === 'epc') {
             $image->insert(
-                $potentialEnergyEfficiencyRatingArrow,
+                $this->arrow($this->currentEnergyEfficiencyRating(), 'eer'),
+                'top-left',
+                545,
+                $this->height($this->currentEnergyEfficiencyRating())
+            );
+
+            $image->insert(
+                $this->arrow($this->currentEnvironmentalImpactRating(), 'eir'),
+                'top-left',
+                1327,
+                $this->height($this->currentEnvironmentalImpactRating())
+            );
+
+            $image->insert(
+                $this->arrow($this->potentialEnergyEfficiencyRating(), 'eer'),
                 'top-left',
                 635,
                 $this->height($this->potentialEnergyEfficiencyRating())
             );
 
-            $potentialEnvironmentalImpactRatingArrow = $this->arrow($this->potentialEnvironmentalImpactRating(), 'eir');
             $image->insert(
-                $potentialEnvironmentalImpactRatingArrow,
+                $this->arrow($this->potentialEnvironmentalImpactRating(), 'eir'),
                 'top-left',
                 1415,
+                $this->height($this->potentialEnvironmentalImpactRating())
+            );
+        }
+
+        if ($this->energyAssessment() === 'pea') {
+            $image->insert(
+                $this->arrow($this->currentEnergyEfficiencyRating(), 'eer'),
+                'top-left',
+                545,
+                $this->height($this->currentEnergyEfficiencyRating())
+            );
+
+            $image->insert(
+                $this->arrow($this->currentEnvironmentalImpactRating(), 'eir'),
+                'top-left',
+                1238,
+                $this->height($this->currentEnvironmentalImpactRating())
+            );
+        }
+
+        if ($this->energyAssessment() === 'eer') {
+            $image->insert(
+                $this->arrow($this->currentEnergyEfficiencyRating(), 'eer'),
+                'top-left',
+                545,
+                $this->height($this->currentEnergyEfficiencyRating())
+            );
+
+            $image->insert(
+                $this->arrow($this->potentialEnergyEfficiencyRating(), 'eer'),
+                'top-left',
+                635,
+                $this->height($this->potentialEnergyEfficiencyRating())
+            );
+        }
+
+        if ($this->energyAssessment() === 'eir') {
+            $image->insert(
+                $this->arrow($this->currentEnvironmentalImpactRating(), 'eir'),
+                'top-left',
+                545,
+                $this->height($this->currentEnvironmentalImpactRating())
+            );
+
+            $image->insert(
+                $this->arrow($this->potentialEnvironmentalImpactRating(), 'eir'),
+                'top-left',
+                635,
                 $this->height($this->potentialEnvironmentalImpactRating())
             );
         }
