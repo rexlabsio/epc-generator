@@ -344,27 +344,34 @@ class EpcGenerator
             );
         }
 
-        if (!is_null($this->address()) || !is_null($this->reference())) {
+
+        if (!is_null($this->address())) {
             // Expand the image to have the address under the diagram.
             $original_width = $image->getWidth();
             $original_height = $image->getHeight();
-            $image->resizeCanvas($original_width, ($original_height + 130), 'top', false, 'ffffff')
-            ->text('Address: ' . $this->address(), 15, ($original_height + 50), function ($font) {
-                $font->file(__DIR__ . '/../assets/Arial.ttf');
-                $font->size(24);
-                $font->color('#000');
-                $font->align('left');
-            })->text('Reference: ' . $this->reference(), 15, ($original_height + 100), function ($font) {
-                $font->file(__DIR__ . '/../assets/Arial.ttf');
-                $font->size(24);
-                $font->color('#000');
-                $font->align('left');
-            });
+            $image->resizeCanvas($original_width, ($original_height + 65), 'top', false, 'ffffff')
+                ->text('Address: ' . $this->address(), 15, ($original_height + 50), function ($font) {
+                    $font->file(__DIR__ . '/../assets/Arial.ttf');
+                    $font->size(24);
+                    $font->color('#000');
+                    $font->align('left');
+                });
         }
 
-        $image->encode($format, $quality);
+        if (!is_null($this->reference())) {
+            // Expand the image to have the reference under the diagram.
+            $original_width = $image->getWidth();
+            $original_height = $image->getHeight();
+            $image->resizeCanvas($original_width, ($original_height + 65), 'top', false, 'ffffff')
+                ->text('Reference: ' . $this->reference(), 15, ($original_height + 100), function ($font) {
+                    $font->file(__DIR__ . '/../assets/Arial.ttf');
+                    $font->size(24);
+                    $font->color('#000');
+                    $font->align('left');
+                });
+        }
 
-        return $image;
+        return $image->encode($format, $quality);
     }
 
     /**
