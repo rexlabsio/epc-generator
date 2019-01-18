@@ -468,7 +468,8 @@ class EpcGenerator
             return intval(261 - (($value - 81) * 58.5 / 10) - 30);
         }
 
-        if ($value >= 92 && $value <= 100) {
+        if ($value >= 92) {
+            $value = $value > 100 ? 100 : $value;
             return intval(197 - (($value - 92) * 58.5 / 10) - 30);
         }
     }
