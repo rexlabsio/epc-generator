@@ -2,6 +2,7 @@
 
 namespace Rexlabs\EpcGenerator\Tests;
 
+use org\bovigo\vfs\vfsStreamDirectory;
 use Rexlabs\EpcGenerator\EpcGenerator;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;

@@ -16,11 +16,11 @@
         }
     ],
     "require": {
-        "php": "^7.0.0",
+        "php": ">=7.0 <8.3",
         "intervention/image": "^2.4"
     },
     "require-dev": {
-        "mikey179/vfsStream": "^1.6",
+        "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
