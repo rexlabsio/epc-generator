@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Configure and run tests
+      - name: Install Dependencies
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
           'apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
@@ -25,5 +25,8 @@ jobs:
           && cd /app \
           && curl -sS https://getcomposer.org/installer | php -- --filename=composer \
           && php composer update --prefer-stable --prefer-dist --no-interaction \
-          && rm composer \
-          && cd /app && ./vendor/bin/phpunit'
+          && rm composer'
+
+      - name: Run tests
+        run: |
+          docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \ 'cd /app && ./vendor/bin/phpunit'
