@@ -3,8 +3,9 @@
 namespace Rexlabs\EpcGenerator\Tests;
 
 use Rexlabs\EpcGenerator\EpcGenerator;
-use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsstream;
 use PHPUnit\Framework\TestCase;
+use org\bovigo\vfs\vfsStreamDirectory;
 
 class EpcGeneratorTest extends TestCase
 {
@@ -16,9 +17,10 @@ class EpcGeneratorTest extends TestCase
     /**
      * set up test environment.
      */
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->root = vfsStream::setup('exampleDir');
+      parent::setUp();
+      $this->root = vfsStream::setup('exampleDir');
     }
 
     public function testReportCanBeCreated()
