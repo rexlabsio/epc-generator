@@ -17,8 +17,7 @@
     ],
     "require": {
         "php": ">=7.2 <8.3",
-        "intervention/image": "^2.4",
-        "ext-gd": "*"
+        "intervention/image": "^2.4"
     },
     "require-dev": {
         "mikey179/vfsstream": "^1.6",
