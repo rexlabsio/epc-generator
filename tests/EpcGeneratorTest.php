@@ -17,7 +17,7 @@ class EpcGeneratorTest extends TestCase
     /**
      * set up test environment.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->root = vfsStream::setup('exampleDir');
