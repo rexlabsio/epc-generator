@@ -18,8 +18,8 @@ jobs:
 
       - name: Configure environment
         run: |
-          docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine -c \        
-          'apt-get update && apt-get install -y \
+          docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \        
+          'apt update && apt install \
           libfreetype-dev \
           libjpeg62-turbo-dev \
           libpng-dev \
