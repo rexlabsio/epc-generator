@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
-          'docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-png=/usr/include/ && docker-php-ext-install gd'
+          'docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ && docker-php-ext-install gd'
 
       - name: Install extensions
         run: |
