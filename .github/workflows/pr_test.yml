@@ -19,9 +19,13 @@ jobs:
       - name: Configure environment
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
-          'apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
-          && docker-php-ext-configure gd --with-freetype --with-jpeg \
-          && docker-php-ext-install -j$(nproc) gd'
+          'apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
+          docker-php-ext-configure gd \
+          --with-freetype \
+          --with-jpeg \
+          NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
+          docker-php-ext-install -j$(nproc) gd && \
+          apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev'
 
       - name: Install extensions
         run: |
