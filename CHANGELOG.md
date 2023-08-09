@@ -1,3 +1,3 @@
 # 2.0.0
 
-- Limit support explicitly to PHP 7.0-8.2
+- Limit support explicitly to PHP 7.2-8.2
