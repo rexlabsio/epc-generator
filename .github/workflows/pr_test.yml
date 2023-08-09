@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]
+        php: ["7.4", "8.0", "8.1", "8.2"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,6 +20,10 @@ jobs:
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
             'cd /app && curl -sS https://getcomposer.org/installer | php -- --filename=composer && php composer update --prefer-stable --prefer-dist --no-interaction && rm composer'
+      - name: Install extensions
+        run: |
+          docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
+            'docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd'
       - name: Run tests
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c 'cd /app && ./vendor/bin/phpunit'
