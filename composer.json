@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": ">=7.4 <8.3",
-        "ext-gd": "*",
         "intervention/image": "^2.4"
     },
     "require-dev": {
