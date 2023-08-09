@@ -21,6 +21,7 @@ jobs:
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
           'apk update && apk add zlib \
           libpng-dev \
+          libjpeg \
           && docker-php-ext-configure gd --with-freetype --with-jpeg \
           && docker-php-ext-install -j$(nproc) gd'
 
