@@ -19,17 +19,11 @@ jobs:
       - name: Configure environment
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \        
-          'apt update && apt install \
-          libfreetype-dev \
+          'apk add libfreetype-dev\
           libjpeg62-turbo-dev \
           libpng-dev \
           && docker-php-ext-configure gd --with-freetype --with-jpeg \
           && docker-php-ext-install -j$(nproc) gd'
-
-      - name: Install dependencies
-        run: |
-          docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
-          'docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(nproc) gd'
 
       - name: Install extensions
         run: |
