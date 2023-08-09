@@ -29,4 +29,4 @@ jobs:
 
       - name: Run tests
         run: |
-          docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \ 'cd /app && ./vendor/bin/phpunit'
+          docker exec $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \ 'cd /app && ./vendor/bin/phpunit'
