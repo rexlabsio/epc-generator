@@ -21,9 +21,9 @@ jobs:
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
           'apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
           && docker-php-ext-configure gd --with-freetype --with-jpeg \
-          && docker-php-ext-install -j$(nproc) gd
-          && cd /app
-          && curl -sS https://getcomposer.org/installer | php -- --filename=composer
-          && php composer update --prefer-stable --prefer-dist --no-interaction
-          && rm composer
+          && docker-php-ext-install -j$(nproc) gd \
+          && cd /app \
+          && curl -sS https://getcomposer.org/installer | php -- --filename=composer \
+          && php composer update --prefer-stable --prefer-dist --no-interaction \
+          && rm composer \
           && cd /app && ./vendor/bin/phpunit'
