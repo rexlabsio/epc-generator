@@ -19,8 +19,7 @@ jobs:
       - name: Configure environment
         run: |
           docker run -v $(pwd):/app php:${{ matrix.php }}-cli-alpine /bin/sh -c \
-          'apk update && apk add libfreetype-dev \
-          libjpeg62-turbo-dev \
+          'apk update && apk add zlib \
           libpng-dev \
           && docker-php-ext-configure gd --with-freetype --with-jpeg \
           && docker-php-ext-install -j$(nproc) gd'
