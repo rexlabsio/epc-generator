@@ -2,10 +2,10 @@
 
 namespace Rexlabs\EpcGenerator\Tests;
 
-use Rexlabs\EpcGenerator\EpcGenerator;
 use org\bovigo\vfs\vfsStream;
-use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStreamDirectory;
+use PHPUnit\Framework\TestCase;
+use Rexlabs\EpcGenerator\EpcGenerator;
 
 class EpcGeneratorTest extends TestCase
 {
