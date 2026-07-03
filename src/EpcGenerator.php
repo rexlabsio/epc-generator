@@ -359,11 +359,12 @@ class EpcGenerator
         }
 
         if (!is_null($this->reference())) {
+            $shrink = !is_null($this->address()) ? 15 : 0;
             // Expand the image to have the reference under the diagram.
             $original_width = $image->getWidth();
             $original_height = $image->getHeight();
-            $image->resizeCanvas($original_width, ($original_height + 65), 'top', false, 'ffffff')
-                ->text('Reference: ' . $this->reference(), 15, ($original_height + 100), function ($font) {
+            $image->resizeCanvas($original_width, ($original_height + (65 - $shrink)), 'top', false, 'ffffff')
+                ->text('Reference: ' . $this->reference(), 15, ($original_height + (50 - $shrink)), function ($font) {
                     $font->file(__DIR__ . '/../assets/Arial.ttf');
                     $font->size(24);
                     $font->color('#000');
